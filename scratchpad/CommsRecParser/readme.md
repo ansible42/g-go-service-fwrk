@@ -1,0 +1,1 @@
+I was playing around with the the idea of using more primitive data structures but JSON appears to be better for this application as it is easy to parse and human readable
