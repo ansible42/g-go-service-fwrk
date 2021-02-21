@@ -1,11 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
-	_ "encoding/json"
 	"fmt"
 	"github.com/gookit/color"
 	"github.com/tidwall/gjson"
+	"net"
 	"os"
 	_ "strings"
 )
@@ -22,18 +23,18 @@ func DoExitMsg(data string) {
 		fmt.Println(err)
 	}
 	if msg.ExitCode != 0 {
-		fmt.Println(msg.ExitMessage)
+		color.Red.Print(msg.ExitMessage, true)
 	}
 	os.Exit(int(msg.ExitCode))
 }
 
 type PrintLineMsg struct {
-	LineToPrint string `json:"Message"`
-	Color       struct {
+	LineToPrint string `json:"LineToPrint"`
+	TxtColor    struct {
 		B uint8 `json:"b"`
 		G uint8 `json:"g"`
 		R uint8 `json:"r"`
-	} `json:"color"`
+	} `json:"TxtColor"`
 }
 
 func DoPrintLine(data string) {
@@ -42,7 +43,7 @@ func DoPrintLine(data string) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	color.RGB(msg.Color.R, msg.Color.G, msg.Color.B).Println(msg.LineToPrint)
+	color.RGB(msg.TxtColor.R, msg.TxtColor.G, msg.TxtColor.B).Println(msg.LineToPrint)
 
 }
 
@@ -61,15 +62,26 @@ func GetMsgType(JSONBall string) {
 }
 
 func main() {
-	const ExitMsg = `{"state": "Exit", "data":{ "ExitCode": 42,"ExitMessage": "How many roads must a man walk down"}}`
-	const PrintLineRed = `{"state":"PrintLine","data":{"Message":"You should print this line", "color":{"r":255,"b":0,"g":0}}}`
-	const PrintLineBlue = `{"state":"PrintLine","data":{"Message":"You should print this line", "color":{"r":0,"b":255,"g":0}}}`
-	const PrintLineGreen = `{"state":"PrintLine","data":{"Message":"You should print this line", "color":{"r":0,"b":0,"g":255}}}`
+	arguments := os.Args
+	if len(arguments) == 1 {
+		fmt.Println("Please provide host:port.")
+		return
+	}
 
-	GetMsgType(PrintLineRed)
-	GetMsgType(PrintLineGreen)
-	GetMsgType(PrintLineBlue)
-	GetMsgType(ExitMsg)
+	CONNECT := arguments[1]
+	fmt.Println("Connecting to ", CONNECT)
+	c, err := net.Dial("tcp", CONNECT)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
-	return
+	for {
+		fmt.Println("Waiting for message")
+		LatestMsg, err := bufio.NewReader(c).ReadString('\n')
+		if err != nil {
+			color.Red.Println(err)
+		}
+		GetMsgType(LatestMsg)
+	}
 }

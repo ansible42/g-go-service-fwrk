@@ -2,10 +2,12 @@ package main
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"net"
 	"os"
-	//"strings"
+
+	"github.com/alecthomas/kong"
 )
 
 type t_msg struct {
@@ -33,13 +35,19 @@ func main() {
 		message, _ := bufio.NewReader(c).ReadString('\n')
 		println("RAW MSG:: ", message)
 		LatestMsg.state = message[0:4]
-		LatestMsg.data = message[5:len(message)]
+		LatestMsg.data = message[5:]
 		PrintMsgRec(LatestMsg)
-
+		ParseMsgRec(LatestMsg)
 	}
 }
 
 func PrintMsgRec(Message t_msg) {
 	fmt.Println("Message State:: ", Message.state)
 	fmt.Println("Message DATA:: ", Message.data)
+}
+
+func ParseMsgRec(Message t_msg) {
+	RunMsg := func(ctx context.Context, t_msg.Message.state) {
+
+	}
 }
