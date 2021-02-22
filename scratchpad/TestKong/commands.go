@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"path"
 )
 
 type TestCmd struct {
