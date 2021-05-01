@@ -44,7 +44,6 @@ func DoPrintLine(data string) {
 		fmt.Println(err)
 	}
 	color.RGB(msg.TxtColor.R, msg.TxtColor.G, msg.TxtColor.B).Println(msg.LineToPrint)
-
 }
 
 func GetMsgType(JSONBall string) {
@@ -58,7 +57,6 @@ func GetMsgType(JSONBall string) {
 	case "PrintLine":
 		DoPrintLine(data.String())
 	}
-
 }
 
 func main() {

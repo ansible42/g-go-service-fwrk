@@ -2,6 +2,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 )
 
@@ -20,6 +21,13 @@ type CountdownCmd struct {
 }
 
 func (a *CountdownCmd) Run(globals *Globals) error {
-
+	// Marshall the private data for the class to be called
+	privateData, err := json.Marshal(a)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	//the actor name is hard coded to its client class
+	MakeCmd("TestProcesses.lvlib:Counter.lvclass", string(privateData))
 	return nil
 }

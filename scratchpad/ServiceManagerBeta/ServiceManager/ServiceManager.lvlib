@@ -4,14 +4,12 @@
 	<Property Name="NI.Lib.SourceVersion" Type="Int">536903680</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
-	<Item Name="Comms" Type="Folder">
-		<Item Name="Messages for this Actor" Type="Folder">
-			<Item Name="SendUpstreamMsg Msg.lvclass" Type="LVClass" URL="../ServiceManager-Comms Messages/SendUpstreamMsg Msg/SendUpstreamMsg Msg.lvclass"/>
-			<Item Name="WaitForCommand Msg.lvclass" Type="LVClass" URL="../ServiceManager-Comms Messages/WaitForCommand Msg/WaitForCommand Msg.lvclass"/>
-			<Item Name="WaitForConnect Msg.lvclass" Type="LVClass" URL="../ServiceManager-Comms Messages/WaitForConnect Msg/WaitForConnect Msg.lvclass"/>
-		</Item>
-		<Item Name="ServiceManager-Comms.lvclass" Type="LVClass" URL="../ServiceManager-Comms/ServiceManager-Comms.lvclass"/>
+	<Property Name="NI.SortType" Type="Int">3</Property>
+	<Item Name="Messages for this Actor" Type="Folder">
+		<Item Name="SendUpstreamMessage Msg.lvclass" Type="LVClass" URL="../../ServiceManager Messages/SendUpstreamMessage Msg/SendUpstreamMessage Msg.lvclass"/>
+		<Item Name="Launch Downstream Handler Msg.lvclass" Type="LVClass" URL="../../ServiceManager Messages/Launch Downstream Handler Msg/Launch Downstream Handler Msg.lvclass"/>
 	</Item>
-	<Item Name="ServiceManager.lvclass" Type="LVClass" URL="../ServiceManager/ServiceManager.lvclass"/>
-	<Item Name="State.ctl" Type="VI" URL="../ServiceManager/UpstreamMsg/State.ctl"/>
+	<Item Name="Service Manager" Type="Folder">
+		<Item Name="ServiceManager.lvclass" Type="LVClass" URL="../ServiceManager.lvclass"/>
+	</Item>
 </Library>

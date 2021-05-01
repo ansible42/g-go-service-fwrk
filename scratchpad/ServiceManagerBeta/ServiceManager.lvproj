@@ -20,9 +20,12 @@
 				<Property Name="marked" Type="Int">0</Property>
 			</Item>
 		</Item>
-		<Item Name="DownstreamMsgHandler.lvlib" Type="Library" URL="../ServiceManager/ServiceManager/DownstreamMsg/DownstreamMsgHandler.lvlib"/>
+		<Item Name="DownstreamMsgHandler.lvlib" Type="Library" URL="../ServiceManager/DownstreamMsg/DownstreamMsgHandler.lvlib"/>
+		<Item Name="Message Handling.lvlib" Type="Library" URL="../ServiceManager/Message Handling/Message Handling.lvlib"/>
+		<Item Name="ServiceManager-Comms.lvlib" Type="Library" URL="../ServiceManager/Nested/ServiceManager-Comms/ServiceManager-Comms.lvlib"/>
+		<Item Name="ServiceManager-DebugView.lvlib" Type="Library" URL="../ServiceManager/Nested/ServiceManager-DebugView/ServiceManager-DebugView.lvlib"/>
 		<Item Name="ServiceManager.lvlib" Type="Library" URL="../ServiceManager/ServiceManager.lvlib"/>
-		<Item Name="UpstreamMsg.lvlib" Type="Library" URL="../ServiceManager/ServiceManager/UpstreamMsg/UpstreamMsg.lvlib"/>
+		<Item Name="UpstreamMsg.lvlib" Type="Library" URL="../ServiceManager/UpstreamMsg/UpstreamMsg.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Actor Framework.lvlib" Type="Library" URL="/&lt;vilib&gt;/ActorFramework/Actor Framework.lvlib"/>

@@ -7,6 +7,7 @@ import (
 	"os"
 )
 
+// Upstream of the service, this is messages that come from the service and must be acted on.
 // Each Upstream message is defined by a json struct and has an accompanying function
 //
 
